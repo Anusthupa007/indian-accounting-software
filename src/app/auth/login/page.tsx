@@ -20,7 +20,7 @@ export default function LoginPage() {
         </p>
       </div>
 
-      <AuthMethods />
+      <AuthMethods authMethod={authMethod} setAuthMethod={setAuthMethod} />
       
       {authMethod === "credentials" && (
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -226,7 +226,10 @@ function MobileLogin({ mobile, setMobile, otp, setOtp, otpSent, setOtpSent }: {
   );
 }
 
-function AuthMethods() {
+function AuthMethods({ authMethod, setAuthMethod }: {
+  authMethod: string;
+  setAuthMethod: (method: string) => void;
+}) {
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white py-4 px-4 shadow sm:rounded-lg sm:px-10">
