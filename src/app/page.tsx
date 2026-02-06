@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 const inter = Inter({ subsets: ["latin"] });
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 function WelcomeMessage() {
   // Enhanced welcome message with features highlight
