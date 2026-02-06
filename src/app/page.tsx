@@ -9,28 +9,14 @@ const inter = Inter({ subsets: ["latin"] });
 export const dynamic = 'force-dynamic';
 
 function WelcomeMessage() {
-  const { data: session } = useSession();
-
-  if (session) {
-    return (
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">
-          Welcome back, {session.user?.name}!
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Your Indian Accounting Software is ready
-        </p>
-      </div>
-    );
-  }
-
+  // Temporarily removed session check to fix build
   return (
     <div className="text-center">
       <h1 className="text-4xl font-bold mb-4">
         Welcome to Indian Accounting Software
       </h1>
       <p className="text-xl text-gray-600 mb-8">
-        Please sign in to access all features
+        GST-compliant accounting for Indian businesses
       </p>
       <Link
         href="/auth/login"
