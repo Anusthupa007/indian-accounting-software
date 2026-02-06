@@ -1,8 +1,12 @@
+"use client";
+
 import { Inter } from "next/font/google";
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const dynamic = 'force-dynamic';
 
 function WelcomeMessage() {
   const { data: session } = useSession();
