@@ -1,3 +1,4 @@
+"use client";
 // TallyTest.tsx - Component for testing Tally integration with sample data
 import React, { useState } from 'react';
 import TallyConnector from '@/lib/tally-connector';
@@ -74,7 +75,7 @@ export default function TallyTest() {
           test: 'Company Data',
           status: 'failed',
           message: 'Failed to get company data',
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error'
         };
       }
       setTestResults([...results]);
@@ -133,7 +134,7 @@ export default function TallyTest() {
           test: 'Invoice Import',
           status: 'failed',
           message: 'Failed to import invoice',
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error'
         };
       }
       setTestResults([...results]);
@@ -160,7 +161,7 @@ export default function TallyTest() {
           test: 'GST Reports',
           status: 'failed',
           message: 'Failed to get GST reports',
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error'
         };
       }
       setTestResults([...results]);
@@ -186,7 +187,7 @@ export default function TallyTest() {
           test: 'Financial Statements',
           status: 'failed',
           message: 'Failed to get financial statements',
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error'
         };
       }
       setTestResults([...results]);
