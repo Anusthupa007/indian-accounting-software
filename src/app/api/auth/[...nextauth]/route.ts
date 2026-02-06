@@ -125,6 +125,7 @@ export const authOptions = {
           const newUser = {
             id: String(users.length + 1),
             name: "Mobile User " + mobile.slice(-4),
+            username: "mobile_" + mobile.slice(-4),
             email: mobile + "@mobile.com",
             password: "", // Not used for mobile auth
             role: "user"
