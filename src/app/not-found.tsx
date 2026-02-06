@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 export default function NotFound() {
   useEffect(() => {
     // Optional: You can add any client-side logic here
