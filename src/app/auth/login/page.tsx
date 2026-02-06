@@ -114,12 +114,28 @@ export default function LoginPage() {
       </div>
       )}
       
-      {authMethod === "mobile" && <MobileLogin />}
+      {authMethod === "mobile" && (
+        <MobileLogin 
+          mobile={mobile} 
+          setMobile={setMobile} 
+          otp={otp} 
+          setOtp={setOtp} 
+          otpSent={otpSent} 
+          setOtpSent={setOtpSent} 
+        />
+      )}
     </div>
   );
 }
 
-function MobileLogin() {
+function MobileLogin({ mobile, setMobile, otp, setOtp, otpSent, setOtpSent }: {
+  mobile: string;
+  setMobile: (value: string) => void;
+  otp: string;
+  setOtp: (value: string) => void;
+  otpSent: boolean;
+  setOtpSent: (value: boolean) => void;
+}) {
   const handleSendOtp = () => {
     if (mobile && mobile.length === 10 && /^\d+$/.test(mobile)) {
       // In a real app, you would send OTP via SMS here
