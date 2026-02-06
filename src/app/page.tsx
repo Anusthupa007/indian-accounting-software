@@ -88,7 +88,17 @@ export default function Home() {
       </div>
 
       <div className="relative flex place-items-center mt-16">
-        <WelcomeMessage />
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">
+            🇮🇳 Indian Accounting Software
+          </h1>
+          <p className="text-xl text-gray-600 mb-6">
+            GST-compliant accounting solution
+          </p>
+          <p className="text-lg text-gray-500 mb-8">
+            Manage invoices, expenses, and GST filings
+          </p>
+        </div>
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left gap-8">
