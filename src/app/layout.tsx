@@ -13,24 +13,18 @@ export const metadata: Metadata = {
 };
 
 import Navigation from '@/components/Navigation';
-import { usePathname } from 'next/navigation';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  
-  // Don't render Navigation on not-found page to avoid session issues
-  const showNavigation = !pathname?.startsWith('/_not-found');
-  
   return (
     <html lang="en">
       <body
         className={`${inter.variable} antialiased`}
       >
-        {showNavigation && <Navigation />}
+        <Navigation />
         {children}
       </body>
     </html>
