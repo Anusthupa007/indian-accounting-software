@@ -24,7 +24,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
-        <Navigation />
+        {/* Navigation temporarily disabled to resolve build issues */}
+        {/* <Navigation /> */}
         {children}
       </body>
     </html>
