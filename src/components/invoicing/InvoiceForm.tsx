@@ -1,3 +1,4 @@
+"use client";
 // InvoiceForm.tsx - Basic invoice form component
 import React, { useState } from 'react';
 
