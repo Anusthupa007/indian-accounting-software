@@ -61,6 +61,7 @@ export default function Navigation() {
                 Tally Integration
               </Link>
             </div>
+            </div>
             <div className="flex items-center">
               <AuthStatus />
             </div>
