@@ -53,7 +53,7 @@ export const authOptions = {
           const newUser = {
             id: String(users.length + 1),
             name: credentials.name || credentials.username,
-            username: credentials.username,
+            username: credentials.username || credentials.email.split('@')[0],
             email: credentials.email,
             password: credentials.password, // In production, hash this!
             role: "user"
