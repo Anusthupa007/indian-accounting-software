@@ -1,7 +1,45 @@
 import { Inter } from "next/font/google";
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 const inter = Inter({ subsets: ["latin"] });
+
+function WelcomeMessage() {
+  const { data: session } = useSession();
+
+  if (session) {
+    return (
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">
+          Welcome back, {session.user?.name}!
+        </h1>
+        <p className="text-xl text-gray-600 mb-8">
+          Your Indian Accounting Software is ready
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="text-center">
+      <h1 className="text-4xl font-bold mb-4">
+        Welcome to Indian Accounting Software
+      </h1>
+      <p className="text-xl text-gray-600 mb-8">
+        Please sign in to access all features
+      </p>
+      <Link
+        href="/auth/login"
+        className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center"
+      >
+        Sign In to Continue
+        <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </Link>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -13,9 +51,7 @@ export default function Home() {
       </div>
 
       <div className="relative flex place-items-center mt-16">
-        <h1 className="text-4xl font-bold mb-8 text-center">
-          Welcome to Indian Accounting Software
-        </h1>
+        <WelcomeMessage />
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left gap-8">
