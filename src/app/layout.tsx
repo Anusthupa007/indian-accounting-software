@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "GST-compliant accounting software for Indian businesses",
 };
 
+import Navigation from '@/components/Navigation';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
+        <Navigation />
         {children}
       </body>
     </html>
