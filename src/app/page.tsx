@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,32 +19,32 @@ export default function Home() {
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left gap-8">
-        <div className="group rounded-lg border border-transparent px-5 py-8 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 bg-white shadow-sm">
+        <Link href="/invoice" className="group rounded-lg border border-transparent px-5 py-8 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 bg-white shadow-sm block">
           <h2 className="mb-3 text-2xl font-semibold text-green-700">
             Invoicing
           </h2>
           <p className="m-0 max-w-[30ch] text-sm text-gray-600">
             Create and manage GST-compliant invoices with automatic tax calculations
           </p>
-        </div>
+        </Link>
 
-        <div className="group rounded-lg border border-transparent px-5 py-8 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 bg-white shadow-sm">
+        <Link href="/expenses" className="group rounded-lg border border-transparent px-5 py-8 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 bg-white shadow-sm block">
           <h2 className="mb-3 text-2xl font-semibold text-blue-700">
             Expense Tracking
           </h2>
           <p className="m-0 max-w-[30ch] text-sm text-gray-600">
             Track business expenses and categorize them for better financial management
           </p>
-        </div>
+        </Link>
 
-        <div className="group rounded-lg border border-transparent px-5 py-8 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 bg-white shadow-sm">
+        <Link href="/reports" className="group rounded-lg border border-transparent px-5 py-8 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 bg-white shadow-sm block">
           <h2 className="mb-3 text-2xl font-semibold text-purple-700">
             GST Reports
           </h2>
           <p className="m-0 max-w-[30ch] text-sm text-gray-600">
             Generate GST reports for easy filing and compliance
           </p>
-        </div>
+        </Link>
       </div>
 
       <div className="mt-16 text-center">
