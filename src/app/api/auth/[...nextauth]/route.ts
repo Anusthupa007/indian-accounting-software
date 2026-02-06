@@ -10,6 +10,7 @@ const users = [
   {
     id: "1",
     name: "Admin User",
+    username: "admin",
     email: "admin@indianaccounting.com",
     password: "admin123", // In production, use hashed passwords
     role: "admin"
@@ -17,11 +18,15 @@ const users = [
   {
     id: "2",
     name: "Regular User",
+    username: "user",
     email: "user@indianaccounting.com",
     password: "user123", // In production, use hashed passwords
     role: "user"
   }
 ];
+
+// Password reset tokens storage (for demo)
+const resetTokens: Record<string, { email: string; expires: number }> = {};
 
 export const authOptions = {
   providers: [
@@ -32,10 +37,42 @@ export const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials: any) {
-        // In production, you would verify against a real database
-        // and check hashed passwords
+        // Handle signup if it's a new user
+        if (credentials.action === 'signup') {
+          // Check if user already exists
+          const existingUser = users.find(user => 
+            user.email === credentials.email || 
+            user.username === credentials.username
+          );
+          
+          if (existingUser) {
+            return null; // User already exists
+          }
+          
+          // Create new user
+          const newUser = {
+            id: String(users.length + 1),
+            name: credentials.name || credentials.username,
+            username: credentials.username,
+            email: credentials.email,
+            password: credentials.password, // In production, hash this!
+            role: "user"
+          };
+          
+          users.push(newUser);
+          
+          return {
+            id: newUser.id,
+            name: newUser.name,
+            email: newUser.email,
+            username: newUser.username,
+            role: newUser.role
+          };
+        }
+        
+        // Handle login
         const user = users.find(user => 
-          user.email === credentials.email && 
+          (user.email === credentials.email || user.username === credentials.email) &&
           user.password === credentials.password
         );
 
@@ -44,6 +81,7 @@ export const authOptions = {
             id: user.id,
             name: user.name,
             email: user.email,
+            username: user.username,
             role: user.role
           };
         } else {
@@ -108,6 +146,35 @@ export const authOptions = {
             name: existingUser.name,
             email: existingUser.email,
             role: existingUser.role
+          };
+        }
+        
+        return null;
+      }
+    }),
+    // Password reset provider (custom)
+    CredentialsProvider({
+      name: "Password Reset",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        token: { label: "Reset Token", type: "text" },
+        newPassword: { label: "New Password", type: "password" }
+      },
+      async authorize(credentials: any) {
+        // In a real app, you would verify the reset token
+        // For demo, we'll accept any token
+        
+        const user = users.find(user => user.email === credentials.email);
+        
+        if (user && credentials.token && credentials.newPassword) {
+          // Update password (in demo, we just return the user)
+          // In production, you would actually update the password
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            username: user.username,
+            role: user.role
           };
         }
         
