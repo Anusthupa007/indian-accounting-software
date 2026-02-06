@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_APP_NAME": "Indian Accounting Software",
+    "NEXT_PUBLIC_ENV": "production"
+  },
+  "regions": ["blr1"], // Bangalore region for better performance in India
+  "rewrites": [
+    {
+      "source": "/api/tally/:path*",
+      "destination": "/api/tally/:path*"
+    }
+  ]
+}
