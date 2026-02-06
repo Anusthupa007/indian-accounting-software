@@ -24,6 +24,9 @@ export default function Navigation() {
               <Link href="/reports" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                 Reports
               </Link>
+              <Link href="/tally/setup" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Tally Integration
+              </Link>
             </div>
           </div>
         </div>
